@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = velocity.y <= 0f && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         controller.slopeLimit = isGrounded ? baseSlopeLimit : 90f;
-        controller.stepOffset = velocity.y <= 0f ? baseStepOffset : 0f;
+        controller.stepOffset = isGrounded ? baseStepOffset : 0f;
 
         if (isGrounded && velocity.y < 0f)
         {
