@@ -746,7 +746,7 @@ MonoBehaviour:
   movementSpeed: 8
   gravity: -19.62
   fallSpeedLimit: -30
-  jumpHeight: 1
+  jumpHeight: 1.1
   slopeForce: 5
   slopeCheckRayLength: 1.5
 --- !u!1 &786412256
