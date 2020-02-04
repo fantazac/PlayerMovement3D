@@ -18,16 +18,19 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private float baseSlopeLimit;
+    private float baseStepOffset;
 
     private void Awake()
     {
         baseSlopeLimit = controller.slopeLimit;
+        baseStepOffset = controller.stepOffset;
     }
     
     private void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        //controller.slopeLimit = isGrounded ? baseSlopeLimit : 90f;
+        isGrounded = velocity.y <= 0f && Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        controller.slopeLimit = isGrounded ? baseSlopeLimit : 90f;
+        controller.stepOffset = velocity.y <= 0f ? baseStepOffset : 0f;
 
         if (isGrounded && velocity.y < 0f)
         {
